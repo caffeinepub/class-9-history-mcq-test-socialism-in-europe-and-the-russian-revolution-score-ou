@@ -1,63 +1,46 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T00:14:44.726Z",
-  "summary": "The diff adds a quiz UI, theme styles, and a Motoko question bank, but key requirements around the generated image asset location and backend payload/scoring constraints are not evidenced. It also introduces Internet Identity login plumbing, which is explicitly a non-goal.",
+  "generatedAt": "2026-02-05T00:34:45.268Z",
+  "summary": "Diff shows partial expansion of backend question population (questions numbered at least 1–10) and updates to project_state.json. Due to truncation and lack of visible getQuestions()/scoring code, none of the three explicit requirements can be verified as implemented from the provided diff summary.",
   "missing_requirements": [
     {
-      "id": "REQ-4",
-      "requirement": "Backend method returns quiz questions without exposing correct answers to the client.",
-      "reason": "The backend MCQ type includes `correctAnswerIndex`, and the frontend queries `actor.getQuestions()` as `MCQ[]`. There is no evidence (in the provided diff summary) of a separate client-safe question type or filtering/removal of correct answers in the questions payload.",
+      "id": "REQ-1",
+      "requirement": "Update the backend MCQ question bank to include exactly 25 MCQs covering #russianEmpire, #februaryRevolution, and #afterFebruary with easy→medium→hard progression.",
+      "reason": "The visible portion of backend/main.mo only shows questions 1–10 and only for #russianEmpire and #februaryRevolution; there is no evidence in the truncated diff that the bank contains exactly 25 questions, includes #afterFebruary questions, or that every MCQ has exactly 4 options and correctAnswerIndex in 0..3 across the full set.",
       "evidence": [
-        "backend/main.mo",
-        "frontend/src/hooks/useQueries.ts"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "requirement": "Backend method accepts submitted answers and returns a computed final score out of 50.",
-      "reason": "The diff summary shows frontend calling `actor.submitAnswers(answers)` and treating the result as a number, but the backend implementation of `submitAnswers` and any scaling to a score out of 50 is not shown in the provided truncated backend file excerpt.",
-      "evidence": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/hooks/useQuiz.ts",
         "backend/main.mo"
       ]
     },
     {
-      "id": "REQ-7",
-      "requirement": "Generated static image asset exists under frontend/public/assets/generated and is displayed in the UI.",
-      "reason": "The UI references `/assets/generated/history-quiz-banner.dim_1600x400.png`, but the diff summary does not show the image file being added under `frontend/public/assets/generated` (or anywhere).",
+      "id": "REQ-2",
+      "requirement": "Ensure getQuestions() returns questions ordered easy→medium→hard with deterministic tie-break (stable order across calls).",
+      "reason": "No getQuestions() implementation or explicit sorting/ordering logic is shown in the truncated backend/main.mo diff; therefore ordering and determinism cannot be confirmed.",
       "evidence": [
-        "frontend/src/App.tsx"
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Update backend scoring so 25 questions still yield a maximum score of exactly 50 without hard-capping.",
+      "reason": "No scoring function or scoring constants/logic are shown in the truncated backend/main.mo diff, so it cannot be verified that a perfect 25/25 yields 50 and 0/25 yields 0 via the scoring model itself.",
+      "evidence": [
+        "backend/main.mo"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Internet Identity (AuthClient) integration/provider and identity-based actor creation.",
-      "reason": "The BuildRequest explicitly lists user accounts/Internet Identity login as a non-goal, but the diff adds `useInternetIdentity`, wraps the app in `InternetIdentityProvider`, and creates authenticated/anonymous actors depending on identity.",
+      "description": "Updated/expanded project metadata/state tracking in project_state.json (e.g., new_feature_requests entries AR-1..AR-5, summary text).",
+      "reason": "BuildRequest does not ask to modify project_state.json; requested changes are strictly backend quiz content/order/scoring.",
       "evidence": [
-        "frontend/src/hooks/useInternetIdentity.ts",
-        "frontend/src/hooks/useActor.ts",
-        "frontend/src/main.tsx"
+        "project_state.json"
       ]
     }
   ],
-  "confidence": 0.72,
+  "confidence": 0.62,
   "changed_files": [
-    "all_files_summary.json",
     "backend/main.mo",
-    "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/hooks/useQuiz.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

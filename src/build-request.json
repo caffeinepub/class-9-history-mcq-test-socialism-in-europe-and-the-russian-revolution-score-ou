@@ -1,133 +1,74 @@
 {
   "kind": "build_request",
-  "title": "Class 9 History MCQ Test: Socialism in Europe and the Russian Revolution (Score out of 50)",
+  "title": "Expand History Quiz to a 25-question set",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Create an MCQ test experience for Class 9 History chapter “Socialism in Europe and the Russian Revolution” focused on the topics: (1) The First World War and the Russian Empire, (2) The February Revolution and Petrograd, and (3) After February.",
-      "target": "both",
+      "text": "Update the backend MCQ question bank to include exactly 25 MCQs for the Class 9 History chapter “Socialism in Europe and the Russian Revolution”, covering the existing topics (#russianEmpire, #februaryRevolution, #afterFebruary) with a clear easy → medium → hard progression.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-3"
         ],
         "quotes": [
-          "proper MCQ test of the chapter socialism in Europe and the Russian revolution chapter of history especially the topics like , the first world war and thee Russian empire, the February Revolution and Petrograd, after february class 9th"
+          "Give 25 questions🙋"
         ]
       },
       "acceptanceCriteria": [
-        "The app provides an MCQ test screen with questions from the specified chapter and topic areas.",
-        "Each question shows a prompt and multiple answer options (single correct answer)."
+        "Calling getQuestions() returns an array of length 25.",
+        "Every returned MCQ has exactly 4 options.",
+        "Every returned MCQ has correctAnswerIndex within the options bounds (0..3).",
+        "The returned set includes questions across all three existing topics (#russianEmpire, #februaryRevolution, #afterFebruary)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Implement a full test flow where the user answers MCQs and receives a final score out of 50 when the test ends.",
-      "target": "both",
+      "text": "Ensure the questions delivered to the frontend are ordered from easy to hard (difficulty first, then deterministic tie-break such as question text), so the quiz consistently progresses easy → medium → hard.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-3"
         ],
         "quotes": [
-          "there will be questions and I will give answer as a proper MCQ test and at the end it will give me my score out of 50"
+          "Give 25 questions🙋"
         ]
       },
       "acceptanceCriteria": [
-        "The user can progress through the test by selecting exactly one option per question and moving forward.",
-        "At the end of the test, the UI displays “Score: X / 50” where X is computed from the user’s answers.",
-        "The score computation is deterministic and based on the stored correct answers."
+        "getQuestions() returns questions ordered by difficulty: all #easy questions first, then #medium, then #hard.",
+        "For questions with the same difficulty, the order is stable/deterministic across calls (no random reshuffling)."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Provide a question set that progresses from easy to hard difficulty across the test (earlier questions easier, later questions harder).",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "it should have easy to hard questions"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Questions are tagged or organized by difficulty (at least: easy, medium, hard).",
-        "The delivered test order shows a clear difficulty progression from easy to hard."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Backend: store and serve the MCQ question bank (including topic, difficulty, options, and correct answer) from the single Motoko actor, and provide a scoring mechanism that returns the final score out of 50 based on submitted answers.",
+      "text": "Maintain the final score semantics of “out of 50” when the quiz has 25 questions by updating backend scoring logic so the maximum achievable score is exactly 50 for a perfect attempt on all 25 questions.",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-3"
+        ],
+        "quotes": [
+          "Give 25 questions🙋"
         ]
       },
       "acceptanceCriteria": [
-        "A backend method returns the full test’s questions needed to take the quiz (without exposing correct answers to the client in that payload).",
-        "A backend method accepts the user’s selected answers and returns the computed score out of 50.",
-        "The backend question set includes coverage for the three requested topic areas."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Frontend: build a clean test-taking UI with (1) a start screen describing the chapter/topics and total score out of 50, (2) a question screen with answer selection and navigation, and (3) an end screen showing the final score out of 50 and an option to restart the test.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The start screen clearly indicates the test is for Class 9 History and shows that the final score is out of 50.",
-        "The question screen allows selecting one option per question and prevents accidental submission without a selection (by disabling next/submit until selected, or equivalent).",
-        "The end screen shows the final score out of 50 and includes a restart action that resets progress."
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Add a coherent, distinctive visual theme for the quiz site (colors, typography, layout) and apply it consistently across all screens; do not use a blue/purple primary palette.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All pages/screens share a consistent design system (buttons, cards, headings, spacing).",
-        "The primary palette is not blue/purple."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Add the generated static image asset(s) to the frontend and render them in the UI (served from frontend/public/assets/generated).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The generated image(s) exist under frontend/public/assets/generated.",
-        "At least one app screen displays the generated image(s) (e.g., start screen header/banner)."
+        "Submitting all correct answers for the full 25-question set yields a score of exactly 50.",
+        "Submitting all incorrect answers yields a score of 0.",
+        "The backend does not rely on a hard cap to force results to 50; the scoring model itself sums to 50 for a perfect attempt."
       ]
     }
   ],
   "constraints": [
-    "Use English for all user-facing UI text.",
-    "Backend must remain a single Motoko actor (all Motoko logic in backend/main.mo).",
-    "Do not edit files under frontend/src/components/ui or other immutablePaths; compose them instead."
+    "Backend must remain a single Motoko actor with all logic in backend/main.mo (no additional backend services).",
+    "Do not modify any frontend files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any files under frontend/src/components/ui."
   ],
   "nonGoals": [
-    "User accounts, Internet Identity login, or saving historical attempts across sessions.",
-    "Real-time features (multiplayer/live proctoring/chat).",
-    "Admin UI for creating/editing questions in the browser."
+    "Adding new quiz topics beyond the existing three topics already present in the codebase.",
+    "Adding new authentication methods beyond Internet Identity.",
+    "Adding real-time multiplayer, chat, leaderboards, or persistence beyond the current in-memory question bank."
   ],
   "imageRequirements": {
-    "required": [
-      "Vintage textbook-style banner illustration with subtle Russian revolution motifs (no text), warm paper background, pen-and-ink look (history-quiz-banner.dim_1600x400.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

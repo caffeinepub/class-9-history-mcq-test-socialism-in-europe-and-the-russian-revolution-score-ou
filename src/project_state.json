@@ -1,99 +1,112 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Website for taking a Class 9 History MCQ test on \"Socialism in Europe and the Russian Revolution\" with topic-focused questions, difficulty progression (easy to hard), and a final score out of 50.",
+  "projectStateVersion": 7,
+  "summary": "Internet Computer (Motoko + React/Vite) app to deliver a Class 9 History MCQ test for the chapter \"Socialism in Europe and the Russian Revolution\" with topic-focused questions, easy-to-hard difficulty progression, and scoring out of 50.",
   "existing_features": [
     {
-      "id": "feature-create-an-mcq-test-experience-for-class-9-history-chapter-socialism-in-europe-and-the-russian-revolution-focused-on-the-topics-1-the-first-world-war-and-the-russian-empire-2-the-february-revolution-and-petrograd-and-3-after-february",
-      "title": "Create an MCQ test experience for Class 9 History chapter “Socialism in Europe and the Russian Revolution” focused on the topics: (1) The First World War and the Russian Empire, (2) The February Revolution and Petrograd, and (3) After February.",
-      "reqIds": [
-        "REQ-1"
+      "id": "IF-1",
+      "title": "Project scaffold: IC canisters + React/Vite frontend",
+      "synonyms": [
+        "core infrastructure",
+        "initial app scaffold"
       ],
+      "description": "Repository initialized with build scripts/templates, Dockerfile, deploy tooling, canister YAMLs, and a React/Vite frontend wired for Internet Computer deployment.",
+      "reqIds": [],
       "version": 1
     },
     {
-      "id": "feature-implement-a-full-test-flow-where-the-user-answers-mcqs-and-receives-a-final-score-out-of-50-when-the-test-ends",
-      "title": "Implement a full test flow where the user answers MCQs and receives a final score out of 50 when the test ends.",
-      "reqIds": [
-        "REQ-2"
+      "id": "IF-2",
+      "title": "Motoko backend canister with generated bindings",
+      "synonyms": [
+        "backend canister",
+        "Candid bindings"
       ],
+      "description": "Motoko backend (main.mo) with corresponding Candid/TypeScript declaration artifacts (backend.did.* and backend.d.ts) and frontend actor wiring (backend.ts/useActor).",
+      "reqIds": [],
       "version": 1
     },
     {
-      "id": "feature-provide-a-question-set-that-progresses-from-easy-to-hard-difficulty-across-the-test-earlier-questions-easier-later-questions-harder",
-      "title": "Provide a question set that progresses from easy to hard difficulty across the test (earlier questions easier, later questions harder).",
-      "reqIds": [
-        "REQ-3"
+      "id": "IF-3",
+      "title": "Internet Identity authentication integration (frontend hooks)",
+      "synonyms": [
+        "II auth",
+        "Internet Identity login"
       ],
+      "description": "Frontend includes hooks/utilities to authenticate via Internet Identity and manage identity/agent state (useInternetIdentity).",
+      "reqIds": [],
       "version": 1
     },
     {
-      "id": "feature-frontend-build-a-clean-test-taking-ui-with-1-a-start-screen-describing-the-chapter-topics-and-total-score-out-of-50-2-a-question-screen-with-answer-selection-and-navigation-and-3-an-end-screen-showing-the-final-score-out-of-50-and-an-option-to-restart-the-test",
-      "title": "Frontend: build a clean test-taking UI with (1) a start screen describing the chapter/topics and total score out of 50, (2) a question screen with answer selection and navigation, and (3) an end screen showing the final score out of 50 and an option to restart the test.",
-      "reqIds": [
-        "REQ-5"
+      "id": "IF-4",
+      "title": "History Quiz frontend (quiz state + query hooks + UI asset)",
+      "synonyms": [
+        "quiz app",
+        "history quiz"
       ],
+      "description": "Frontend implements a History Quiz experience with quiz-specific hooks (useQuiz), query/state utilities (useQueries), storage client, and a generated banner asset.",
+      "reqIds": [],
       "version": 1
     },
     {
-      "id": "feature-add-a-coherent-distinctive-visual-theme-for-the-quiz-site-colors-typography-layout-and-apply-it-consistently-across-all-screens-do-not-use-a-blue-purple-primary-palette",
-      "title": "Add a coherent, distinctive visual theme for the quiz site (colors, typography, layout) and apply it consistently across all screens; do not use a blue/purple primary palette.",
-      "reqIds": [
-        "REQ-6"
+      "id": "IF-5",
+      "title": "shadcn/ui component set included via build template",
+      "synonyms": [
+        "UI component library",
+        "shadcn components"
       ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-generated-static-image-asset-s-to-the-frontend-and-render-them-in-the-ui-served-from-frontend-public-assets-generated",
-      "title": "Add the generated static image asset(s) to the frontend and render them in the UI (served from frontend/public/assets/generated).",
-      "reqIds": [
-        "REQ-7"
-      ],
+      "description": "Large set of shadcn/ui components and related tooling/config included under build-template for reuse (buttons, dialogs, forms, navigation, etc.).",
+      "reqIds": [],
       "version": 1
     }
   ],
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create a website that delivers an MCQ test for Class 9 History chapter \"Socialism in Europe and the Russian Revolution\" (topics include WWI and the Russian Empire, February Revolution and Petrograd, and events after February).",
+      "summary": "MCQ test for Class 9 History chapter \"Socialism in Europe and the Russian Revolution\" (topics include WWI & Russian Empire, February Revolution & Petrograd, After February) with easy-to-hard questions and final score out of 50",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Allow the user to answer MCQ questions in a proper test format and show a final score out of 50 at the end.",
+      "summary": "Provide a 25-question set for the MCQ test (question bank/content generation)",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-3",
-      "summary": "Include questions that progress from easy to hard difficulty.",
-      "reqIds": [],
+      "summary": "Update the backend MCQ question bank to include exactly 25 MCQs for the Class 9 History chapter “Socialism in Europe and the Russian Revolution”, covering the existing topics (#russianEmpire, #februaryRevolution, #afterFebruary) with a clear easy → medium → hard progression.",
+      "reqIds": [
+        "REQ-1"
+      ],
       "status": "pending"
     },
     {
-      "id": "AR-7",
-      "summary": "Backend: store and serve the MCQ question bank (including topic, difficulty, options, and correct answer) from the single Motoko actor, and provide a scoring mechanism that returns the final score out of 50 based on submitted answers.",
+      "id": "AR-4",
+      "summary": "Ensure the questions delivered to the frontend are ordered from easy to hard (difficulty first, then deterministic tie-break such as question text), so the quiz consistently progresses easy → medium → hard.",
       "reqIds": [
-        "REQ-4"
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Maintain the final score semantics of “out of 50” when the quiz has 25 questions by updating backend scoring logic so the maximum achievable score is exactly 50 for a perfect attempt on all 25 questions.",
+      "reqIds": [
+        "REQ-3"
       ],
       "status": "pending"
     }
   ],
-  "architectural_notes": [],
+  "architectural_notes": [
+    "Frontend uses React + Vite with Tailwind and shadcn/ui components.",
+    "Authentication is handled via Internet Identity through a dedicated hook (useInternetIdentity).",
+    "Frontend-backend communication uses generated Candid TypeScript bindings and an actor hook (useActor).",
+    "Build-template includes image tooling scripts (resize/prune) and reusable canister/frontend templates."
+  ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Vintage textbook-style banner illustration with subtle Russian revolution motifs (no text), warm paper background, pen-and-ink look (history-quiz-banner.dim_1600x400.png)",
-  "generatedImages": [
-    {
-      "filename": "history-quiz-banner.dim_1600x400.png",
-      "description": "Vintage textbook-style banner illustration with subtle Russian revolution motifs (no text), warm paper background, pen-and-ink look",
-      "targetWidth": 1600,
-      "targetHeight": 400
-    }
-  ],
   "gameProjectType": "none",
-  "projectName": "Class 9 History MCQ Test: Socialism in Europe and the Russian Revolution (Score out of 50)",
+  "projectName": "Expand History Quiz to a 25-question set",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
