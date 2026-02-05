@@ -1,0 +1,7 @@
+{
+  "frontend/src/App.tsx": "Main quiz application component managing three screens (start, question, result) with warm vintage textbook design, progress tracking, and score display out of 50.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching quiz questions from backend and submitting user answers to calculate final score.",
+  "frontend/src/hooks/useQuiz.ts": "Custom hook managing quiz state including question ordering by difficulty (easy to hard), answer selection, navigation, and score calculation.",
+  "frontend/src/index.css": "Global styles with warm vintage textbook color palette using OKLCH (sepia/brown tones, not blue/purple) for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with vintage-themed design tokens, custom shadows, and serif font options for textbook aesthetic."
+}

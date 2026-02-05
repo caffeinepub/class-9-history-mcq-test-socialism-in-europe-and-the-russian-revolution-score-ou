@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website for taking a Class 9 History MCQ test on \"Socialism in Europe and the Russian Revolution\" with topic-focused questions, difficulty progression (easy to hard), and a final score out of 50.",
+  "existing_features": [
+    {
+      "id": "feature-create-an-mcq-test-experience-for-class-9-history-chapter-socialism-in-europe-and-the-russian-revolution-focused-on-the-topics-1-the-first-world-war-and-the-russian-empire-2-the-february-revolution-and-petrograd-and-3-after-february",
+      "title": "Create an MCQ test experience for Class 9 History chapter “Socialism in Europe and the Russian Revolution” focused on the topics: (1) The First World War and the Russian Empire, (2) The February Revolution and Petrograd, and (3) After February.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-full-test-flow-where-the-user-answers-mcqs-and-receives-a-final-score-out-of-50-when-the-test-ends",
+      "title": "Implement a full test flow where the user answers MCQs and receives a final score out of 50 when the test ends.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-question-set-that-progresses-from-easy-to-hard-difficulty-across-the-test-earlier-questions-easier-later-questions-harder",
+      "title": "Provide a question set that progresses from easy to hard difficulty across the test (earlier questions easier, later questions harder).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-frontend-build-a-clean-test-taking-ui-with-1-a-start-screen-describing-the-chapter-topics-and-total-score-out-of-50-2-a-question-screen-with-answer-selection-and-navigation-and-3-an-end-screen-showing-the-final-score-out-of-50-and-an-option-to-restart-the-test",
+      "title": "Frontend: build a clean test-taking UI with (1) a start screen describing the chapter/topics and total score out of 50, (2) a question screen with answer selection and navigation, and (3) an end screen showing the final score out of 50 and an option to restart the test.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-coherent-distinctive-visual-theme-for-the-quiz-site-colors-typography-layout-and-apply-it-consistently-across-all-screens-do-not-use-a-blue-purple-primary-palette",
+      "title": "Add a coherent, distinctive visual theme for the quiz site (colors, typography, layout) and apply it consistently across all screens; do not use a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-generated-static-image-asset-s-to-the-frontend-and-render-them-in-the-ui-served-from-frontend-public-assets-generated",
+      "title": "Add the generated static image asset(s) to the frontend and render them in the UI (served from frontend/public/assets/generated).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a website that delivers an MCQ test for Class 9 History chapter \"Socialism in Europe and the Russian Revolution\" (topics include WWI and the Russian Empire, February Revolution and Petrograd, and events after February).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Allow the user to answer MCQ questions in a proper test format and show a final score out of 50 at the end.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Include questions that progress from easy to hard difficulty.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Backend: store and serve the MCQ question bank (including topic, difficulty, options, and correct answer) from the single Motoko actor, and provide a scoring mechanism that returns the final score out of 50 based on submitted answers.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Vintage textbook-style banner illustration with subtle Russian revolution motifs (no text), warm paper background, pen-and-ink look (history-quiz-banner.dim_1600x400.png)",
+  "generatedImages": [
+    {
+      "filename": "history-quiz-banner.dim_1600x400.png",
+      "description": "Vintage textbook-style banner illustration with subtle Russian revolution motifs (no text), warm paper background, pen-and-ink look",
+      "targetWidth": 1600,
+      "targetHeight": 400
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Class 9 History MCQ Test: Socialism in Europe and the Russian Revolution (Score out of 50)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
